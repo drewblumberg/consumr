@@ -1,1 +1,7 @@
-<h1 class="title">CONSUMR</h1>
+<% unless user_signed_in? %>
+  <h1 class="title">CONSUMR</h1>
+<% else %>
+  <div class="user_info">
+    <%= image_tag avatar_url(current_user) %>
+  </div>
+<% end %>
