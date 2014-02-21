@@ -3,6 +3,7 @@ ruby '2.0.0'
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.0.0'
+gem 'devise'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'pg'
@@ -17,7 +18,10 @@ group :doc do
 end
 
 group :test, :development do
+  gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'pry'
   gem 'rspec'
   gem 'rspec-rails'
 end
