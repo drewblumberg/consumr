@@ -25,5 +25,19 @@ describe "EditProfile" do
       click_button('Update')
       page.should have_content('Email can\'t be blank')
     end
+    it "should throw error if current password is not given" do
+      fill_in('First name', :with => 'Dave')
+      click_button('Update')
+      page.should have_content('Current password can\'t be blank')
+    end
+    it "should reflect name change on user page" do
+      fill_in('First name', :with => 'Eddard')
+      fill_in('Last name', :with => 'Stark')
+      fill_in('Current password', :with => "password")
+      click_button('Update')
+      page.should have_content('You updated your account successfully.')
+      page.should have_content('Eddard Stark')
+      page.should_not have_content('Jon Snow')
+    end
   end
 end
