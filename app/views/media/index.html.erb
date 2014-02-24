@@ -4,4 +4,7 @@
   <div class="user_info">
     <%= image_tag avatar_url(current_user) %>
   </div>
+  <div class="name">
+    <%= current_user.full_name %>
+  </div>
 <% end %>

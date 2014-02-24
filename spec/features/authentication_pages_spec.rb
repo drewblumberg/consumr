@@ -17,6 +17,8 @@ describe "Authentication pages" do
     before do
       visit '/'
       click_link('Sign Up')
+      fill_in('First name', :with => 'Drew')
+      fill_in('Last name', :with => 'Example')
       fill_in('Email', :with => 'drew@example.com')
       fill_in('Password', :with => 'password')
       fill_in('Password confirmation', :with => 'password')
@@ -27,6 +29,9 @@ describe "Authentication pages" do
     end
     it "should have sign out link after sign up" do
       find_link('Sign Out').visible?
+    end
+    it "should have home link after sign up" do
+      find_link('Home').visible?
     end
     it "should not have sign in link after sign up" do
       page.should_not have_content('Sign In')
@@ -40,12 +45,8 @@ describe "Authentication pages" do
 
   context "signing in with email" do
     before do
-      FactoryGirl.create(:user, email: "drew@example.com")
-      visit '/'
-      click_link('Sign In')
-      fill_in('Email', :with => 'drew@example.com')
-      fill_in('Password', :with => 'password')
-      click_button("Sign in")
+      @user = FactoryGirl.create(:user, email: "drew@example.com")
+      sign_in_user(@user)
     end
     it "should show the success message for signing in" do
       page.should have_content("Signed in successfully.")
