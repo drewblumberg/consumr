@@ -7,4 +7,5 @@
   <div class="name">
     <%= current_user.full_name %>
   </div>
+  <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit' %>
 <% end %>

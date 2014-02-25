@@ -16,5 +16,14 @@ describe "UserProfiles" do
     it "should have the user name on the page" do
       page.should have_content('Jon Snow')
     end
+
+    it "should have an edit user button" do
+      find_button('Edit Profile').visible?
+    end
+
+    it "should send you to the Account page if you click edit button" do
+      click_button('Edit Profile')
+      page.should have_content('Edit User')
+    end
   end
 end

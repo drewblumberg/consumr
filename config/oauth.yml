@@ -1,0 +1,9 @@
+development:
+  facebook:
+    app_id: 485141101595592
+    secret_key: 48be7b81d2a6c1e66033a5fcbecadf43
+
+test:
+  facebook:
+    app_id: 485141101595592
+    secret_key: 48be7b81d2a6c1e66033a5fcbecadf43
