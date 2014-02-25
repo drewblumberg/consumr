@@ -14,3 +14,23 @@
 .clear {
   clear: both;
 }
+
+.profile_container {
+  float: left;
+}
+
+.user_favorites {
+  float: left;
+  margin-left: 10px;
+}
+
+.current_media {
+  float: left;
+  margin-left: 20px;
+  border-bottom: 2px dashed black;
+  display: inline
+}
+
+.button_to {
+  display: inline-block;
+}

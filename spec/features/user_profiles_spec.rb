@@ -25,5 +25,14 @@ describe "UserProfiles" do
       click_button('Edit Profile')
       page.should have_content('Edit User')
     end
+
+    it "should have an Add Media button" do
+      find_button('Add Media').visible?
+    end
+
+    it "should send you to the new Media page when clicking Add Media" do
+      click_button('Add Media')
+      page.should have_content('Add Media')
+    end
   end
 end

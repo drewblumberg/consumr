@@ -39,5 +39,16 @@ describe "EditProfile" do
       page.should have_content('Eddard Stark')
       page.should_not have_content('Jon Snow')
     end
+    it "should reflect favorites on user page" do
+      fill_in('Favorite Movies', :with => 'The Matrix')
+      fill_in('Favorite TV Shows', :with => 'LOST')
+      fill_in('Favorite Books', :with => 'Naked Lunch')
+      fill_in('Current password', :with => "password")
+      click_button('Update')
+      page.should have_content('You updated your account successfully.')
+      page.should have_content('Favorite Movies: The Matrix')
+      page.should have_content('Favorite TV Shows: LOST')
+      page.should have_content('Favorite Books: Naked Lunch')
+    end
   end
 end

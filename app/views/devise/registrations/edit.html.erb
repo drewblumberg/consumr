@@ -12,6 +12,15 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
+  <div><%= f.label :fav_movies, 'Favorite Movies' %><br />
+  <%= f.text_area :fav_movies %></div>
+
+  <div><%= f.label :fav_tv, 'Favorite TV Shows' %><br />
+  <%= f.text_area :fav_tv %></div>
+
+  <div><%= f.label :fav_books, 'Favorite Books' %><br />
+  <%= f.text_area :fav_books %></div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

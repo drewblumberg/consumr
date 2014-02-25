@@ -18,10 +18,12 @@ group :doc do
 end
 
 group :test, :development do
+  gem 'better_errors'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'rails-footnotes'
   gem 'rspec'
   gem 'rspec-rails'
 end
