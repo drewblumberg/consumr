@@ -1,5 +1,17 @@
 <% unless user_signed_in? %>
   <h1 class="title">CONSUMR</h1>
 <% else %>
-  <h1 class="title">Add Media</h1>
+  <div class="add_media_search_container">
+    <h1 class="title">Add Media</h1>
+    <select id="categories_search" class="categories">
+      <option>Movie</option>
+      <option>TV</option>
+      <option>Book</option>
+    </select>
+    <%= form_tag(book_search_search_path, remote: true) do %>
+      <%= text_field_tag :search_item %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
+  <div id="search_results" class="search_results"></div>
 <% end %>

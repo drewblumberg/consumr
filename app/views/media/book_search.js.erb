@@ -1,0 +1,2 @@
+$('#search_results').empty();
+$('#search_results').html('<%= j render partial: 'media/book_search', locals: { books: @books } %>');

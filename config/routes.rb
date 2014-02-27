@@ -6,6 +6,11 @@ Consumr::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'media#index'
   resources :media, only: [:index, :create, :new]
+  resource :search, only: [:index] do
+    member do
+      post :book_search
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

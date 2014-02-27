@@ -1,0 +1,10 @@
+<% books.each do |book| %>
+  <div class="book">
+    <%= image_tag(book.image_link(:zoom => 1)) %>
+    <ul class="book_info">
+      <li><%= book.title %></li>
+      <li><%= book.authors %></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+<% end %>

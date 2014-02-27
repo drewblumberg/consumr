@@ -34,3 +34,25 @@
 .button_to {
   display: inline-block;
 }
+
+.add_media_search_container {
+  float: left;
+}
+
+.search_results {
+  float: left;
+}
+
+.book {
+  margin-bottom: 5px;
+
+  img {
+    float: left;
+  }
+
+  .book_info {
+    float: left;
+    list-style: none;
+    margin-left: 5px;
+  }
+}
