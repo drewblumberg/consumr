@@ -1,4 +1,4 @@
-class CreateMedia < ActiveRecord::Migration
+class CreateMedium < ActiveRecord::Migration
   def change
     create_table :media do |t|
       t.string :title

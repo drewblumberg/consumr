@@ -50,4 +50,3 @@ def sign_in_user(user)
   fill_in('Password', :with => user.password)
   click_button("Sign in")
 end
-

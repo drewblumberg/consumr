@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js { render 'media/book_search' }
+      format.js { render 'medium/book_search' }
     end
   end
 end

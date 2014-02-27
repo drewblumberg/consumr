@@ -4,8 +4,8 @@ Consumr::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'media#index'
-  resources :media, only: [:index, :create, :new]
+  root 'medium#index'
+  resources :medium
   resource :search, only: [:index] do
     member do
       post :book_search
