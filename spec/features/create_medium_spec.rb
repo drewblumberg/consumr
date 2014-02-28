@@ -6,7 +6,7 @@ describe "Create Media" do
       sign_in_user(@user)
       visit '/'
       click_button('Add Media')
-      select('Book', :from => 'categories_search')
+      select('Book', :from => 'search_category')
   end
   context "book search" do
     it "should have a search input" do

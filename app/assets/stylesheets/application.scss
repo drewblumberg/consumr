@@ -43,20 +43,32 @@
   float: left;
 }
 
-.book {
-  margin-bottom: 5px;
+.all_media {
+  list-style: none;
+}
 
+.medium {
+  clear: both;
   img {
     float: left;
   }
 
-  .book_info {
+  .medium_info {
     float: left;
     list-style: none;
     margin-left: 5px;
+
+    li {
+      margin-bottom: 5px;
+    }
   }
 }
 
 .new_media_form_container {
   float: left;
+}
+
+.stock_poster {
+  width: 154px;
+  height: 220px;
 }

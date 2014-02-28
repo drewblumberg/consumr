@@ -8,7 +8,7 @@ Consumr::Application.routes.draw do
   resources :medium
   resource :search, only: [:index] do
     member do
-      post :book_search
+      post :search
     end
   end
 

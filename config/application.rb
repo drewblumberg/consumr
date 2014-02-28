@@ -24,5 +24,13 @@ module Consumr
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    require 'yaml'
+    rails_root = Rails.root || File.dirname(__FILE__) + '/../..'
+    config = YAML.load_file(rails_root.to_s + '/config/env_vars.yml')
+    if config.key?(Rails.env) && config[Rails.env].is_a?(Hash)
+      config[Rails.env].each do |key, value|
+        ENV[key] = value.to_s
+      end
+    end
   end
 end
