@@ -1,0 +1,2 @@
+$('#search_results').empty();
+$('#search_results').html('<%= j render partial: 'searches/search', locals: { category: @category, media_items: @media_items } %>');

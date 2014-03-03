@@ -1,6 +1,7 @@
 class MediumController < ApplicationController
   def index
     @medium = Medium.all
+    @current_media = current_user.media.current_media
   end
 
   def new

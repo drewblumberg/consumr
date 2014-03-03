@@ -16,5 +16,18 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $('medium').on('click', )
+  $('#search_results').on('click', '.medium img', fillInFormData)
 });
+
+function fillInFormData(e){
+  var $this = $(this);
+  var $list_item = $this.parent();
+  var image_url = $this.attr('src');
+  var title = $list_item.children('ul').children('li.medium_title').text();
+  var creator = $.trim($list_item.children('ul').children('li.medium_creator').text());
+
+  $('#medium_title').val(title);
+  $('#medium_creator').val(creator);
+  $('#medium_image_url').val(image_url);
+}
+

@@ -1,0 +1,52 @@
+<% if category == '3' %>
+  <ul class="all_media">
+    <% media_items.each do |medium| %>
+      <li class="medium">
+        <%= image_tag(medium.image_link(:zoom => 1)) %>
+        <ul class="medium_info">
+          <li class="medium_title"><%= medium.title %></li>
+          <li class="medium_creator"><%= medium.authors %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% elsif category == '1' %>
+  <ul class="all_media">
+    <% media_items.each do |medium| %>
+      <li class="medium">
+        <% if medium.poster_path %>
+          <%= image_tag("#{@configuration.base_url}w154#{medium.poster_path}") %>
+        <% else %>
+          <%= image_tag("simple_poster.jpg", class:"stock_poster") %>
+        <% end %>
+        <ul class="medium_info">
+          <li class="medium_title"><%= medium.title %></li>
+          <li class="medium_creator">
+            <% Tmdb::Movie.crew(medium.id).each do |crew| %> 
+              <% if crew['department'] == 'Directing' %> 
+                <%= crew['name'] %> 
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% elsif category == '2' %>
+  <ul class="all_media">
+    <% media_items.each do |medium| %>
+      <li class="medium">
+        <% if medium.poster_path %>
+          <%= image_tag("#{@configuration.base_url}w154#{medium.poster_path}") %>
+        <% else %>
+          <%= image_tag("simple_poster.jpg", class:"stock_poster") %>
+        <% end %>
+        <ul class="medium_info">
+          <li class="medium_title"><%= medium.name %></li>
+          <li class="medium_creator">
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
