@@ -23,13 +23,13 @@ describe Friendship do
     it "should return false if user and friend are the same user" do
       expect(Friendship.are_friends(@user1, @user1)).to be false
     end
-    it "should return true if friendship records are created" do
+    it "should return true if friendship records were already created" do
       @friendship_for_user = FactoryGirl.create(:friendship, user: @user1, friend: @user2, status: "accepted")
       @friendship_for_other_user = FactoryGirl.create(:friendship, user: @user2, friend: @user1, status: "accepted")
       expect(Friendship.are_friends(@user1, @user2)).to be true
       expect(Friendship.are_friends(@user2, @user1)).to be true
     end
-    it "should return false if no friendship created" do
+    it "should return false if no friendship had been created" do
       expect(Friendship.are_friends(@user1, @user2)).to be false
       expect(Friendship.are_friends(@user2, @user1)).to be false
     end
