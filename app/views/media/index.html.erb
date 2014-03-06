@@ -1,0 +1,52 @@
+<% unless user_signed_in? %>
+  <h1 class="title">CONSUMR</h1>
+<% else %>
+  <div class="profile_container">
+    <div class="user_info">
+      <%= image_tag avatar_url(current_user) %>
+    </div>
+    <div class="name">
+      <%= current_user.full_name %>
+    </div>
+    <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit' %>
+  </div>
+  <div class="user_favorites">
+    <ul class="favorites">
+      <li>Favorite Movies: <span><%= current_user.fav_movies %></li>
+      <li>Favorite TV Shows: <span><%= current_user.fav_tv %></li>
+      <li>Favorite Books: <span><%= current_user.fav_books %></li>
+    </ul>
+  </div>
+  <div class="current_media">
+    <h2>
+      Current Media
+      <%= button_to 'Add Media', new_medium_path, :method => :get, class: 'new_media' %>
+    </h2>
+    <% if @current_media.any? %>
+      <ul class="current_media_list">
+        <div class="cycle-slideshow"
+          data-cycle-fx="scrollHorz"
+          data-cycle-swipe=true
+          data-cycle-timeout="0"
+          data-cycle-prev="#prev"
+          data-cycle-next="#next"
+          data-cycle-caption="#alt-caption"
+          data-cycle-caption-template="{{alt}}"
+        >
+        <% @current_media.each do |current| %>
+          <% unless current.image_url.nil? %>
+            <img src='<%= current.image_url %>' alt='<%= current.thoughts %>'>
+          <% else %>
+            <img src='simple_poster.jpg'>
+          <% end %>
+        <% end %>
+        </div>
+        <div id="alt-caption" class="center"></div>
+        <div class="center">
+          <a href=# id="prev">Prev</a> 
+          <a href=# id="next">Next</a>
+        </div>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
