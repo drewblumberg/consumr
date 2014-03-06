@@ -1,0 +1,18 @@
+<h1>All users</h1>
+<% @users.each do |user| %>
+  <div class="profile_container">
+    <div class="user_info">
+      <%= image_tag avatar_url(user) %>
+    </div>
+    <div class="name">
+      <%= user.full_name %>
+    </div>
+  </div>
+  <div class="user_favorites">
+    <ul class="favorites">
+      <li>Favorite Movies: <span><%= user.fav_movies %></li>
+      <li>Favorite TV Shows: <span><%= user.fav_tv %></li>
+      <li>Favorite Books: <span><%= user.fav_books %></li>
+    </ul>
+  </div>
+<% end %>

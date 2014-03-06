@@ -4,11 +4,20 @@ Consumr::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'medium#index'
-  resources :medium
+  root 'media#index'
+  resources :media
+  resources :users, only: [:index, :show]
   resource :search, only: [:index] do
     member do
       post :search
+    end
+  end
+  resource :friendships, only: [:index] do
+    member do
+      post :friend_request
+      post :accept
+      post :reject
+      get :my_friends
     end
   end
 

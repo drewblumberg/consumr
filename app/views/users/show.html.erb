@@ -3,26 +3,32 @@
 <% else %>
   <div class="profile_container">
     <div class="user_info">
-      <%= image_tag avatar_url(current_user) %>
+      <%= image_tag avatar_url(@user) %>
     </div>
     <div class="name">
-      <%= current_user.full_name %>
+      <%= @user.full_name %>
     </div>
-    <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit' %>
+    <div class="friendship_status">
+      <% if Friendship.are_friends(current_user, User.find_by(id: params[:id])) %>
+        <%= current_user.friendships.where(friend_id: params[:id]).first.status.capitalize %> Friends
+      <% elsif current_user.id == params[:id].to_i %>
+      <% else %>
+        <%= link_to "Request Friendship", friend_request_friendships_path(friend_id: params[:id]), method: :post %>
+      <% end %>
+    </div>
   </div>
   <div class="user_favorites">
     <ul class="favorites">
-      <li>Favorite Movies: <span><%= current_user.fav_movies %></li>
-      <li>Favorite TV Shows: <span><%= current_user.fav_tv %></li>
-      <li>Favorite Books: <span><%= current_user.fav_books %></li>
+      <li>Favorite Movies: <span><%= @user.fav_movies %></span></li>
+      <li>Favorite TV Shows: <span><%= @user.fav_tv %></span></li>
+      <li>Favorite Books: <span><%= @user.fav_books %></span></li>
     </ul>
   </div>
   <div class="current_media">
     <h2>
       Current Media
-      <%= button_to 'Add Media', new_medium_path, :method => :get, class: 'new_media' %>
     </h2>
-    <% if @current_media %>
+    <% if @current_media.any? %>
       <ul class="current_media_list">
         <div class="cycle-slideshow"
           data-cycle-fx="scrollHorz"
