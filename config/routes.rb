@@ -5,19 +5,21 @@ Consumr::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'media#index'
+
   resources :media
   resources :users, only: [:index, :show]
-  resource :search, only: [:index] do
-    member do
-      post :search
-    end
-  end
+  resources :recommendations, only: [:create, :new]
   resource :friendships, only: [:index] do
     member do
       post :friend_request
       post :accept
       post :reject
       get :my_friends
+    end
+  end
+  resource :search, only: [:index] do
+    member do
+      post :search
     end
   end
 

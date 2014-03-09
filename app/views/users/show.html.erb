@@ -25,7 +25,7 @@
     </ul>
   </div>
   <div class="current_media">
-    <h2>
+    <h2 class="user_subheader">
       Current Media
     </h2>
     <% if @current_media.any? %>
@@ -55,4 +55,24 @@
       </ul>
     <% end %>
   </div>
+  <div class="recommendations">
+    <% if @recommendations %>
+      <h2 class="user_subheader">Recommendations</h2>
+      <% if @friendship %>
+        <%= form_tag(new_recommendation_path(u_id: @user.id), method: :get, remote: true) do %>
+          <%= submit_tag "Add", class: 'new_recommendation' %>
+        <% end %>
+      <% end %>
+      <ul class="recent_recommendations">
+        <% @recommendations.each_with_index do |r, i| %>
+          <% break if i == 3 %>
+          <li>
+            <span><%= User.find(r.creator_id).full_name %> </span>
+            <span><%= r.body %></span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div id="recommendations" class="recommendations"></div>
 <% end %>

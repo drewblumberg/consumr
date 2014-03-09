@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304220134) do
+ActiveRecord::Schema.define(version: 20140306163053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20140304220134) do
   end
 
   add_index "media", ["user_id"], name: "index_media_on_user_id", using: :btree
+
+  create_table "recommendations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "creator_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

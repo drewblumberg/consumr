@@ -49,4 +49,20 @@
       </ul>
     <% end %>
   </div>
+  <div class="recommendations">
+    <% if @recommendations %>
+      <h2 class="user_subheader">Recommendations</h2>
+      <ul class="recent_recommendations">
+        <% @recommendations.each_with_index do |r, i| %>
+          <% break if i == 3 %>
+          <li>
+            <span><%= User.find(r.creator_id).full_name %> </span>
+            <span><%= r.body %></span>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  </div>
+  <div id="recommendations" class="recommendations"></div>
 <% end %>

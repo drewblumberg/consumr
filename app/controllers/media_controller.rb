@@ -2,6 +2,7 @@ class MediaController < ApplicationController
   def index
     @medium = Medium.all
     @current_media = current_user.media.current_media if current_user
+    @recommendations = current_user.recommendations if current_user
   end
 
   def new

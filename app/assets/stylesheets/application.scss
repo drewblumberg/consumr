@@ -24,14 +24,15 @@
   margin-left: 10px;
 }
 
-.current_media {
+.current_media, .recommendations {
   float: left;
   margin-left: 20px;
-  h2 {
-    padding-bottom: 10px;
-    border-bottom: 2px dashed black;
-    display: inline
-  }
+}
+
+.user_subheader {
+  padding-bottom: 10px;
+  border-bottom: 2px dashed black;
+  display: inline
 }
 
 .button_to {

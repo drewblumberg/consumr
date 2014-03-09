@@ -1,0 +1,5 @@
+<%= simple_form_for @recommendation, :url => recommendations_path(user: @user) do |f| %>
+  <%= f.input :body %>
+  <%= f.hidden_field :creator_id, :value => current_user.id %>
+  <%= f.submit "Recommend" %>
+<% end %>

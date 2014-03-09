@@ -29,4 +29,5 @@ group :test, :development do
   gem 'rails-footnotes'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end
