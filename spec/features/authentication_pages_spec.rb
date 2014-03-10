@@ -54,6 +54,12 @@ describe "Authentication pages" do
     it "should have sign out link after sign in" do
       find_link('Sign Out').visible?
     end
+    it "should have the other links in nav" do
+      find_link('Home').visible?
+      find_link('All Users').visible?
+      find_link('My Friends').visible?
+      find_link('My Account').visible?
+    end
     it "should not have sign in link after sign in" do
       page.should_not have_content('Sign In')
     end

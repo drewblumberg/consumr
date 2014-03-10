@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'themoviedb'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -25,6 +26,7 @@ group :test, :development do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'pry'
   gem 'rails-footnotes'
   gem 'rspec'
