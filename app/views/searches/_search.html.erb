@@ -22,9 +22,9 @@
         <ul class="medium_info">
           <li class="medium_title"><%= medium.title %></li>
           <li class="medium_creator">
-            <% Tmdb::Movie.crew(medium.id).each do |crew| %> 
-              <% if crew['department'] == 'Directing' %> 
-                <%= crew['name'] %> 
+            <% Tmdb::Movie.crew(medium.id).each do |crew| %>
+              <% if crew['department'] == 'Directing' %>
+                <%= crew['name'] %>
               <% end %>
             <% end %>
           </li>

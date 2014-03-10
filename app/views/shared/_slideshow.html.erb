@@ -1,0 +1,26 @@
+<% if media.any? %>
+  <ul class="current_media_list">
+    <div class="cycle-slideshow"
+      data-cycle-fx="scrollHorz"
+      data-cycle-swipe=true
+      data-cycle-timeout="0"
+      data-cycle-prev="#prev"
+      data-cycle-next="#next"
+      data-cycle-caption="#adv-custom-caption-<%= status %>"
+      data-cycle-caption-template="{{cycleTitle}}"
+    >
+    <% media.each do |m| %>
+      <% unless m.image_url.nil? %>
+        <img src='<%= m.image_url %>' data-cycle-title='<%= m.thoughts %>'>
+      <% else %>
+        <img src='simple_poster.jpg' data-cycle-title='<%= m.thoughts %>'>
+      <% end %>
+    <% end %>
+    </div>
+    <div id="adv-custom-caption-<%= status %>" class="center"></div>
+    <div class="center">
+      <a href=# id="prev">Prev</a>
+      <a href=# id="next">Next</a>
+    </div>
+  </ul>
+<% end %>
