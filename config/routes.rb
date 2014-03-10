@@ -4,7 +4,7 @@ Consumr::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'media#index'
+  root 'users#show'
 
   resources :media
   resources :users, only: [:index, :show]

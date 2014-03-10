@@ -8,14 +8,17 @@
     <div class="name">
       <%= @user.full_name %>
     </div>
-    <div class="friendship_status">
-      <% if Friendship.are_friends(current_user, User.find_by(id: params[:id])) %>
-        <%= current_user.friendships.where(friend_id: params[:id]).first.status.capitalize %> Friends
-      <% elsif current_user.id == params[:id].to_i %>
-      <% else %>
-        <%= link_to "Request Friendship", friend_request_friendships_path(friend_id: params[:id]), method: :post %>
-      <% end %>
-    </div>
+    <% if @user == current_user %>
+      <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit' %>
+    <% else %>
+      <div class="friendship_status">
+        <% if Friendship.are_friends(current_user, User.find_by(id: params[:id])) %>
+          <%= current_user.friendships.where(friend_id: params[:id]).first.status.capitalize %> Friends
+        <% else %>
+          <%= link_to "Request Friendship", friend_request_friendships_path(friend_id: params[:id]), method: :post %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="user_favorites">
     <ul class="favorites">
@@ -27,6 +30,9 @@
   <div class="current_media">
     <h2 class="user_subheader">
       Current Media
+      <% if @user == current_user %>
+        <%= button_to 'Add Media', new_medium_path, :method => :get, class: 'new_media' %>
+      <% end %>
     </h2>
     <% if @current_media.any? %>
       <ul class="current_media_list">
