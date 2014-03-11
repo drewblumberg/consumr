@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
 
@@ -31,3 +32,5 @@ function fillInFormData(e){
   $('#medium_image_url').val(image_url);
 }
 
+
+$(function(){ $(document).foundation(); });
