@@ -15,6 +15,11 @@ class FriendshipsController < ApplicationController
   def my_friends
     @pending = current_user.friendships.pending_friends
     @requests = current_user.friendships.requested_friends
+    @friends = []
+    current_user.friendships.accepted_friends.each do |f|
+      @friends << User.find(f.friend_id)
+    end
+    @friends = @friends.paginate(page: params[:page], per_page: 5)
     render "/friendships/my_friends"
   end
 

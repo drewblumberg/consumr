@@ -87,7 +87,7 @@ describe "FriendRequests" do
       within("div[id=friend_requests]") do
         find_link("Reject").visible?
       end
-    end  
+    end
 
     it "should give success message when clicking reject" do
       click_link("Reject")

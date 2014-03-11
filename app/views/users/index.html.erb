@@ -1,26 +1,5 @@
 <h1>All users</h1>
 <ul class="all_users_list">
-  <% @users.each do |user| %>
-    <li class="user_profile_info">
-      <div class="profile_container">
-        <div class="user_info">
-          <a href="users/<%= user.id %>">
-            <%= image_tag avatar_url(user) %>
-          </a>
-        </div>
-        <div class="name">
-          <%= user.full_name %>
-        </div>
-      </div>
-      <div class="user_favorites">
-        <ul class="favorites">
-          <li>Favorite Movies: <span><%= user.fav_movies %></li>
-          <li>Favorite TV Shows: <span><%= user.fav_tv %></li>
-          <li>Favorite Books: <span><%= user.fav_books %></li>
-        </ul>
-      </div>
-    </li>
-    <div class="clear"></div>
-  <% end %>
+  <%= render 'shared/user_profile_info', users: @users %>
 </ul>
 <%= will_paginate @users %>

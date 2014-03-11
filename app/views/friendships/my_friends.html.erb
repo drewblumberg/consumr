@@ -1,21 +1,30 @@
 <h1>My Friends</h1>
-
 <div id="friend_requests">
   <h2>Friend Requests</h2>
-  <% if @requests %>
+  <% if @requests.any? %>
     <% @requests.each do |r| %>
       <%= User.find(r.friend_id).full_name %>
       <%= link_to "Accept", accept_friendships_path(f_id: r.friend_id), method: :post %>
       <%= link_to "Reject", reject_friendships_path(f_id: r.friend_id), method: :post %>
     <% end %>
+  <% else %>
+    No friend requests as of now
   <% end %>
 </div>
-
 <div id="pending_friends">
   <h2>Pending Friends</h2>
-  <% if @pending %>
+  <% if @pending.any? %>
     <% @pending.each do |p| %>
       <%= p.full_name %>
     <% end %>
+  <% else %>
+    No pending friends as of now
   <% end %>
+</div>
+<div id="all_friends">
+  <h2>All Friends</h2>
+  <ul class="all_friends_list">
+    <%= render 'shared/user_profile_info', users: @friends %>
+  </ul>
+  <%= will_paginate @friends %>
 </div>

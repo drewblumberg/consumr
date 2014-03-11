@@ -4,6 +4,7 @@ class Friendship < ActiveRecord::Base
 
   scope :pending_friends, -> { where status: "pending" }
   scope :requested_friends, -> { where status: "requested" }
+  scope :accepted_friends, -> { where status: "accepted" }
 
   validates :user_id, presence: true
   validates :friend_id, presence: true
