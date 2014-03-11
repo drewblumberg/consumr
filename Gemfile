@@ -33,4 +33,5 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'webmock'
 end

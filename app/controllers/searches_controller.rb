@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     @category = params[:search_category]
 
     if(@category == '3')
-      @media_items = GoogleBooks.search(@title) 
+      @media_items = GoogleBooks.search(@title)
       respond_to do |format|
         format.html
         format.js { render 'searches/search' }
