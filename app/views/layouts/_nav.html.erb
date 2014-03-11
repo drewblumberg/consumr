@@ -1,16 +1,25 @@
-<nav class='nav_primary'>
-  <ul class='nav_links'>
-    <% if current_user %>
-      <li class='nav_link'><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'signout' %></li>
-      <li class='nav_link'><%= link_to 'My Account', edit_user_registration_path(current_user) %></li>
-      <li class='nav_link'><%= link_to 'My Friends', my_friends_friendships_path %></li>
-      <li class='nav_link'><%= link_to 'My Media', media_path %></li>
-      <li class='nav_link'><%= link_to 'All Users', users_path %></li>
-      <li class='nav_link'><%= link_to 'Home', root_path %></li>
-    <% else %>
-      <li class='nav_link'><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <li class='nav_link'><%= link_to 'Sign In', new_user_session_path, :class => 'signin' %></li>
-    <% end %>
-  </ul>
-</nav>
-<div class='clear'></div>
+<div class="contain-to-grid">
+  <nav class='top-bar' data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/" class="logo">CONSUMR</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class='right'>
+        <% if current_user %>
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'All Users', users_path %></li>
+          <li><%= link_to 'My Media', media_path %></li>
+          <li><%= link_to 'My Friends', my_friends_friendships_path %></li>
+          <li><%= link_to 'My Account', edit_user_registration_path(current_user) %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'signout' %></li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path, :class => 'signin' %></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+</div>
