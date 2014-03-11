@@ -4,7 +4,9 @@
     <li class="user_profile_info">
       <div class="profile_container">
         <div class="user_info">
-          <%= image_tag avatar_url(user) %>
+          <a href="users/<%= user.id %>">
+            <%= image_tag avatar_url(user) %>
+          </a>
         </div>
         <div class="name">
           <%= user.full_name %>

@@ -2,17 +2,10 @@ require 'spec_helper'
 
 describe "All Users Page" do
   before do
+    9.times do
+      FactoryGirl.create(:user, email: Faker::Internet.email, first_name: Faker::Name.first_name)
+    end
     @user1 = FactoryGirl.create(:user, email: "alblumberg21@gmail.com")
-    @user2 = FactoryGirl.create(:user, email: "jdoe2@email.com", first_name: "Jim")
-    @user3 = FactoryGirl.create(:user, email: "jdoe3@email.com", first_name: "Jima")
-    @user4 = FactoryGirl.create(:user, email: "jdoe4@email.com", first_name: "Jimb")
-    @user5 = FactoryGirl.create(:user, email: "jdoe5@email.com", first_name: "Jimc")
-    @user6 = FactoryGirl.create(:user, email: "jdoe6@email.com", first_name: "Jimd")
-    @user7 = FactoryGirl.create(:user, email: "jdoe7@email.com", first_name: "Jime")
-    @user8 = FactoryGirl.create(:user, email: "jdoe8@email.com", first_name: "Jimf")
-    @user9 = FactoryGirl.create(:user, email: "jdoe9@email.com", first_name: "Jimg")
-    @user10 = FactoryGirl.create(:user, email: "jdoe10@email.com", first_name: "Jimh")
-    @user11 = FactoryGirl.create(:user, email: "jdoe11@email.com", first_name: "Jimi")
     sign_in_user(@user1)
     visit "/users"
   end
@@ -25,6 +18,12 @@ describe "All Users Page" do
     end
     it "should have pagination" do
       page.has_css?("div.pagination")
+    end
+  end
+  context "links" do
+    it "should go to correct user page if you click a link" do
+      find(:css, "a[href='users/#{@user1.id}']").click
+      page.should have_content('Jon Snow')
     end
   end
 end
