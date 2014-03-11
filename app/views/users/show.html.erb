@@ -28,38 +28,23 @@
     </ul>
   </div>
   <div class="current_media">
-    <h2 class="user_subheader">
-      Current Media
-      <% if @user == current_user %>
-        <%= button_to 'Add Media', new_medium_path, :method => :get, class: 'new_media' %>
-      <% end %>
-    </h2>
+    <%= render 'shared/slideshow_header', user: @user, status: "Current" %>
     <% if @current_media.any? %>
-      <ul class="current_media_list">
-        <div class="cycle-slideshow"
-          data-cycle-fx="scrollHorz"
-          data-cycle-swipe=true
-          data-cycle-timeout="0"
-          data-cycle-prev="#prev"
-          data-cycle-next="#next"
-          data-cycle-caption="#alt-caption"
-          data-cycle-caption-template="{{alt}}"
-        >
-        <% @current_media.each do |current| %>
-          <% unless current.image_url.nil? %>
-            <img src='<%= current.image_url %>' alt='<%= current.thoughts %>'>
-          <% else %>
-            <img src='simple_poster.jpg'>
-          <% end %>
-        <% end %>
-        </div>
-        <div id="alt-caption" class="center"></div>
-        <div class="center">
-          <a href=# id="prev">Prev</a>
-          <a href=# id="next">Next</a>
-        </div>
-      </ul>
-      <a href="/media">All Media</a>
+      <div class="current_media_all">
+        <%= render 'shared/slideshow', media: @current_media, status: "current" %>
+      </div>
+    <% end %>
+    <%= render 'shared/slideshow_header', user: @user, status: "Wish List" %>
+    <% if @wish_list.any? %>
+      <div class="wish_list_all">
+        <%= render 'shared/slideshow', media: @wish_list, status: "wish" %>
+      </div>
+    <% end %>
+    <%= render 'shared/slideshow_header', user: @user, status: "Finished" %>
+    <% if @finished_media.any? %>
+      <div class="finished_all">
+        <%= render 'shared/slideshow', media: @finished_media, status: "finished" %>
+      </div>
     <% end %>
   </div>
   <div class="recommendations">

@@ -5,7 +5,7 @@ describe "Create Media" do
       @user = FactoryGirl.create(:user)
       sign_in_user(@user)
       visit '/'
-      click_button('Add Media')
+      page.find('.current').click
       select('Book', :from => 'search_category')
   end
   context "book search" do

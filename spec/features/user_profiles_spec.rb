@@ -26,11 +26,13 @@ describe "UserProfiles" do
     end
 
     it "should have an Add Media button" do
-      find_button('Add Media').visible?
+      page.find('input.current').visible?
+      page.find('input.wish.list').visible?
+      page.find('input.finished').visible?
     end
 
     it "should send you to the new Media page when clicking Add Media" do
-      click_button('Add Media')
+      page.find('input.finished').click
       page.should have_content('Add Media')
     end
   end

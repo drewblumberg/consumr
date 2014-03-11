@@ -4,9 +4,9 @@
       data-cycle-fx="scrollHorz"
       data-cycle-swipe=true
       data-cycle-timeout="0"
-      data-cycle-prev="#prev"
-      data-cycle-next="#next"
-      data-cycle-caption="#adv-custom-caption-<%= status %>"
+      data-cycle-prev="#prev-<%= status %>"
+      data-cycle-next="#next-<%= status %>"
+      data-cycle-caption="#adv-custom-caption"
       data-cycle-caption-template="{{cycleTitle}}"
     >
     <% media.each do |m| %>
@@ -19,8 +19,8 @@
     </div>
     <div id="adv-custom-caption-<%= status %>" class="center"></div>
     <div class="center">
-      <a href=# id="prev">Prev</a>
-      <a href=# id="next">Next</a>
+      <a href=# id="prev-<%= status %>">Prev</a>
+      <a href=# id="next-<%= status %>">Next</a>
     </div>
   </ul>
 <% end %>

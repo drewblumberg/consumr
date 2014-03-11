@@ -1,0 +1,6 @@
+<h2 class="user_subheader <%= status.downcase %>_all">
+  <%= status %> Media
+  <% if user == current_user %>
+    <%= button_to 'Add Media', new_medium_path, :method => :get, class: "new_media #{status.downcase}" %>
+  <% end %>
+</h2>

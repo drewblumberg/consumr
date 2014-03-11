@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $('#search_results').on('click', '.medium img', fillInFormData)
+  $('#search_results').on('click', '.medium img', fillInFormData);
 });
 
 function fillInFormData(e){
