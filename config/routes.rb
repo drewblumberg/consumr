@@ -8,7 +8,7 @@ Consumr::Application.routes.draw do
 
   resources :media
   resources :users, only: [:index, :show]
-  resources :recommendations, only: [:create, :new]
+  resources :recommendations, only: [:create, :new, :index, :destroy]
   resource :friendships, only: [:index] do
     member do
       post :friend_request

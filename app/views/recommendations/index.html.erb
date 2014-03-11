@@ -1,0 +1,16 @@
+<h2>All Recommendations</h2>
+<div class="recommendations">
+  <% if @recommendations %>
+    <ul class="recent_recommendations">
+      <% @recommendations.each do |r| %>
+        <li>
+          <span><%= User.find(r.creator_id).full_name %> </span>
+          <span><%= r.body %></span>
+          <%= button_to "Delete", recommendation_path(r.id), method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<div class="clear"></div>
+<%= will_paginate @recommendations %>
