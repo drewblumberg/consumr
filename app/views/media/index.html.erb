@@ -1,36 +1,40 @@
-<% unless user_signed_in? %>
-  <h1 class="title">CONSUMR</h1>
-<% else %>
-  <h2>All Media</h2>
-  <% if @current_media.any? %>
-    <div class="current_media_all">
-      <h3>Current Media</h3>
-      <%= render 'shared/slideshow', media: @current_media, status: "current" %>
+<div class="row">
+  <div class="small-12 large-6 columns">
+    <div class="all_media">
+      <h2>All Media</h2>
+      <% if @all_media %>
+        <ul class="all_media_list">
+          <% @all_media.each do |m| %>
+            <li class='medium_<%= m.id %>'>
+              <%= button_to "X", medium_path(m.id), :method => :delete, :class => "circle" %>
+              <%= m.title %>, <%= m.category %>
+              <span class="move_right"><%= button_to "Edit", edit_medium_path(m.id), :method => :get , :class => "button tiny radius success" %></span>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-  <% end %>
-  <% if @wish_list.any? %>
-    <div class="wish_list_all">
-      <h3>Wish List</h3>
-      <%= render 'shared/slideshow', media: @wish_list, status: "wish" %>
-    </div>
-  <% end %>
-  <% if @finished_media.any? %>
-    <div class="finished_all">
-      <h3>Finished</h3>
-      <%= render 'shared/slideshow', media: @finished_media, status: "finished" %>
-    </div>
-  <% end %>
-  <div class="all_media">
-    <% if @all_media %>
-      <ul class="all_media_list">
-        <% @all_media.each do |m| %>
-          <li class='medium_<%= m.id %>'>
-            <%= m.title %>, <%= m.category %>
-            <%= button_to "Edit", edit_medium_path(m.id), :method => :get %>
-            <%= button_to "Delete", medium_path(m.id), :method => :delete %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
   </div>
-<% end %>
+  <div class="small-12 large-6 columns">
+    <div class="current_media">
+      <% if @current_media.any? %>
+        <div class="current_media_all">
+          <h3>Current Media</h3>
+          <%= render 'shared/slideshow', media: @current_media, status: "current" %>
+        </div>
+      <% end %>
+      <% if @wish_list.any? %>
+        <div class="wish_list_all">
+          <h3>Wish List</h3>
+          <%= render 'shared/slideshow', media: @wish_list, status: "wish" %>
+        </div>
+      <% end %>
+      <% if @finished_media.any? %>
+        <div class="finished_all">
+          <h3>Finished</h3>
+          <%= render 'shared/slideshow', media: @finished_media, status: "finished" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
