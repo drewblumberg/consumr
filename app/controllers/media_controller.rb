@@ -2,7 +2,7 @@ class MediaController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @all_media = Medium.paginate(:page => params[:page], :per_page => 20)
+    @all_media = current_user.media.paginate(:page => params[:page], :per_page => 20)
     @current_media = current_user.media.current_media
     @finished_media = current_user.media.finished
     @wish_list = current_user.media.wish_list
