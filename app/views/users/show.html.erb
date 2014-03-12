@@ -1,74 +1,87 @@
 <% unless user_signed_in? %>
   <h1 class="title">CONSUMR</h1>
 <% else %>
-  <div class="profile_container">
-    <div class="user_info">
-      <%= image_tag avatar_url(@user) %>
-    </div>
-    <div class="name">
-      <%= @user.full_name %>
-    </div>
-    <% if @user == current_user %>
-      <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit' %>
-    <% else %>
-      <div class="friendship_status">
-        <% if Friendship.are_friends(current_user, User.find_by(id: params[:id])) %>
-          <%= current_user.friendships.where(friend_id: params[:id]).first.status.capitalize %> Friends
+  <div class="row">
+    <div class="large-6 small-12 columns">
+      <div class="profile_container">
+        <div class="user_info">
+          <%= image_tag avatar_url(@user) %>
+        </div>
+        <div class="username">
+          <%= @user.full_name %>
+        </div>
+        <% if @user == current_user %>
+          <%= button_to 'Edit Profile', edit_user_registration_path(current_user), :method => :get, class: 'edit button tiny radius' %>
         <% else %>
-          <%= link_to "Request Friendship", friend_request_friendships_path(friend_id: params[:id]), method: :post %>
+          <div class="friendship_status">
+            <% if Friendship.are_friends(current_user, User.find_by(id: params[:id])) %>
+              <%= current_user.friendships.where(friend_id: params[:id]).first.status.capitalize %> Friends
+            <% else %>
+              <%= link_to "Request Friendship", friend_request_friendships_path(friend_id: params[:id]), method: :post %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="user_favorites">
-    <ul class="favorites">
-      <li>Favorite Movies: <span><%= @user.fav_movies %></span></li>
-      <li>Favorite TV Shows: <span><%= @user.fav_tv %></span></li>
-      <li>Favorite Books: <span><%= @user.fav_books %></span></li>
-    </ul>
-  </div>
-  <div class="current_media">
-    <%= render 'shared/slideshow_header', user: @user, status: "Current" %>
-    <% if @current_media.any? %>
-      <div class="current_media_all">
-        <%= render 'shared/slideshow', media: @current_media, status: "current" %>
+      <div class="user_favorites">
+        <ul class="favorites">
+          <li>Favorite Movies: <span><%= @user.fav_movies %></span></li>
+          <li>Favorite TV Shows: <span><%= @user.fav_tv %></span></li>
+          <li>Favorite Books: <span><%= @user.fav_books %></span></li>
+        </ul>
       </div>
-    <% end %>
-    <%= render 'shared/slideshow_header', user: @user, status: "Wish List" %>
-    <% if @wish_list.any? %>
-      <div class="wish_list_all">
-        <%= render 'shared/slideshow', media: @wish_list, status: "wish" %>
-      </div>
-    <% end %>
-    <%= render 'shared/slideshow_header', user: @user, status: "Finished" %>
-    <% if @finished_media.any? %>
-      <div class="finished_all">
-        <%= render 'shared/slideshow', media: @finished_media, status: "finished" %>
-      </div>
-    <% end %>
-  </div>
-  <div class="recommendations">
-    <% if @recommendations %>
-      <h2 class="user_subheader">Recommendations</h2>
-      <% if @friendship %>
-        <%= form_tag(new_recommendation_path(u_id: @user.id), method: :get, remote: true) do %>
-          <%= submit_tag "Add", class: 'new_recommendation' %>
+      <div class="clear"></div>
+      <div class="recommendations">
+        <% if @recommendations %>
+          <h2 class="user_subheader">Recommendations</h2>
+          <% if @friendship %>
+            <%= form_tag(new_recommendation_path(u_id: @user.id), method: :get, remote: true) do %>
+              <%= submit_tag "Add", class: 'new_recommendation' %>
+            <% end %>
+          <% end %>
+          <ul class="recent_recommendations">
+            <% @recommendations.each_with_index do |r, i| %>
+              <% break if i == 3 %>
+              <li>
+                <span><%= r.body %> </span>
+                <span>-(<a href="/users/<%= r.creator_id %>"><%= User.find(r.creator_id).full_name %></a>)</span>
+              </li>
+            <% end %>
+          </ul>
         <% end %>
-      <% end %>
-      <ul class="recent_recommendations">
-        <% @recommendations.each_with_index do |r, i| %>
-          <% break if i == 3 %>
-          <li>
-            <span><%= User.find(r.creator_id).full_name %> </span>
-            <span><%= r.body %></span>
-          </li>
+        <% if @user == current_user %>
+          <a href='/recommendations'>All Recommendations</a>
         <% end %>
-      </ul>
-    <% end %>
-    <% if @user == current_user %>
-      <a href='/recommendations'>All Recommendations</a>
-    <% end %>
-  </div>
-  <div id="recommendations" class="recommendations">
+      </div>
+      <div id="recommendations" class="recommendations">
+      </div>
+    </div>
+    <div class="large-6 small-12 columns">
+      <div class="current_media">
+        <div class="wrapper">
+          <%= render 'shared/slideshow_header', user: @user, status: "Current" %>
+          <% if @current_media.any? %>
+            <div class="current_media_all">
+              <%= render 'shared/slideshow', media: @current_media, status: "current" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="wrapper">
+          <%= render 'shared/slideshow_header', user: @user, status: "Wish List" %>
+          <% if @wish_list.any? %>
+            <div class="wish_list_all">
+              <%= render 'shared/slideshow', media: @wish_list, status: "wish" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="wrapper">
+          <%= render 'shared/slideshow_header', user: @user, status: "Finished" %>
+          <% if @finished_media.any? %>
+            <div class="finished_all">
+              <%= render 'shared/slideshow', media: @finished_media, status: "finished" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

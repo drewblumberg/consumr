@@ -6,8 +6,10 @@
       data-cycle-timeout="0"
       data-cycle-prev="#prev-<%= status %>"
       data-cycle-next="#next-<%= status %>"
-      data-cycle-caption="#adv-custom-caption"
+      data-cycle-caption="#adv-custom-caption-<%= status %>"
       data-cycle-caption-template="{{cycleTitle}}"
+      data-cycle-center-horz=true
+      data-cycle-center-vert=true
     >
     <% media.each do |m| %>
       <% unless m.image_url.nil? %>
@@ -20,6 +22,7 @@
     <div id="adv-custom-caption-<%= status %>" class="center"></div>
     <div class="center">
       <a href=# id="prev-<%= status %>">Prev</a>
+      <span> | </span>
       <a href=# id="next-<%= status %>">Next</a>
     </div>
   </ul>

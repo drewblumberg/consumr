@@ -22,6 +22,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  # gem 'webmock'
+end
+
 group :test, :development do
   gem 'better_errors'
   gem 'capybara'
@@ -34,5 +38,4 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
-  gem 'webmock'
 end

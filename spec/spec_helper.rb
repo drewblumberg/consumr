@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
-require 'webmock/rspec'
+# require 'webmock/rspec'
 
 # Disable external connections
 # WebMock.disable_net_connect!(allow_localhost: true)
