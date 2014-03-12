@@ -13,7 +13,7 @@
     >
     <% media.each do |m| %>
       <% unless m.image_url.nil? %>
-        <img src='<%= m.image_url %>' data-cycle-title='<%= m.thoughts %>'>
+        <img src='<%= m.image_url %>' data-cycle-title='<%= m.title %><br /><%= m.thoughts %>'>
       <% else %>
         <img src='simple_poster.jpg' data-cycle-title='<%= m.thoughts %>'>
       <% end %>
