@@ -1,0 +1,19 @@
+.circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  background-color: #F04124;
+  color: white;
+  font-size: 15px;
+  &:hover {
+    background-color: #CF2A0E;
+    cursor: pointer;
+  }
+}
+
+.rec_header {
+  text-align: center;
+}

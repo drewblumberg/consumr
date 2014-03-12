@@ -1,16 +1,21 @@
-<h2>All Recommendations</h2>
-<div class="recommendations">
-  <% if @recommendations %>
-    <ul class="recent_recommendations">
-      <% @recommendations.each do |r| %>
-        <li>
-          <span><%= User.find(r.creator_id).full_name %> </span>
-          <span><%= r.body %></span>
-          <%= button_to "Delete", recommendation_path(r.id), method: :delete %>
-        </li>
+<div class="row">
+  <div class="small-12 large-6 large-offset-3 columns">
+    <h2 class="rec_header">All Recommendations</h2>
+    <div class="all_recommendations">
+      <% if @recommendations %>
+        <ul class="recent_recommendations">
+          <% @recommendations.each do |r| %>
+            <li>
+              <%= button_to "X", recommendation_path(r.id), method: :delete, :class => 'circle' %>
+              <span><%= r.body %> </span>
+              <span>-(<a href="/users/<%= r.creator_id %>"><%= User.find(r.creator_id).full_name %></a>)</span>
+              <br /><br />
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+    <div class="clear"></div>
+    <%= will_paginate @recommendations %>
+  </div>
 </div>
-<div class="clear"></div>
-<%= will_paginate @recommendations %>
