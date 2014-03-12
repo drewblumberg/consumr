@@ -23,7 +23,7 @@ class MediaController < ApplicationController
       redirect_to media_path
     else
       flash[:notice] = "There was a problem updating your media."
-      redirect_to media_path
+      redirect_to edit_medium_path(params[:id])
     end
   end
 

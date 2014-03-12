@@ -1,12 +1,16 @@
-<h1>Edit Media</h1>
-<div class="new_media_form_container">
-    <%= simple_form_for @medium, :url => medium_path(@medium.id) do |f| %>
-      <%= f.input :title, :id => "medium_title" %>
-      <%= f.input :status, :collection => ["Current", "Wish List", "Finished"], :include_blank => false, :id => "status" %>
-      <%= f.input :category, :collection => ["Book", "Movie", "TV Show"], :include_blank => false, :id => "category" %>
-      <%= f.input :creator, :label => "Author/Director" %>
-      <%= f.input :image_url %>
-      <%= f.input :thoughts %>
-      <%= f.button :submit, "Update" %>
-    <% end %>
+<div class="row">
+  <div class="small-12 large-6 large-offset-3 columns">
+    <h1>Edit Media</h1>
+    <div class="new_media_form_container">
+      <%= simple_form_for @medium, :url => medium_path(@medium.id) do |f| %>
+        <%= f.input :title, :id => "medium_title" %>
+        <%= f.input :status, :collection => ["Current", "Wish List", "Finished"], :include_blank => false, :id => "status" %>
+        <%= f.input :category, :collection => ["Book", "Movie", "TV Show"], :include_blank => false, :id => "category" %>
+        <%= f.input :creator, :label => "Author/Director" %>
+        <%= f.input :image_url %>
+        <%= f.input :thoughts %>
+        <%= f.button :submit, "Update", :class => "button small radius success" %>
+      <% end %>
+    </div>
   </div>
+</div>
