@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, except: [:show]
+
   def index
     @users = User.paginate(:page => params[:page], :per_page => 10)
   end

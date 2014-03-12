@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  before_filter :authenticate_user!
+
   def friend_request
     @user = current_user
     @friend = User.find(params[:friend_id])
