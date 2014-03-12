@@ -15,9 +15,12 @@ class FriendshipsController < ApplicationController
   end
 
   def my_friends
-    @pending = current_user.friendships.pending_friends
+    @pending = []
     @requests = current_user.friendships.requested_friends
     @friends = []
+    current_user.friendships.pending_friends.each do |f|
+      @pending << User.find(f.friend_id)
+    end
     current_user.friendships.accepted_friends.each do |f|
       @friends << User.find(f.friend_id)
     end
