@@ -24,11 +24,12 @@ end
 
 group :test do
   # gem 'webmock'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :test, :development do
   gem 'better_errors'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -37,5 +38,8 @@ group :test, :development do
   gem 'rails-footnotes'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

@@ -5,6 +5,8 @@ require File.expand_path('../application', __FILE__)
 Consumr::Application.initialize!
 
 # Capybara selenium driver set to Chrome
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+if rails.env == "test"
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
 end
