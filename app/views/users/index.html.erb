@@ -1,5 +1,9 @@
-<h1>All users</h1>
-<ul class="all_users_list">
-  <%= render 'shared/user_profile_info', users: @users %>
-</ul>
-<%= will_paginate @users %>
+<div class="row">
+  <div class="small-12 large-8 large-offset-2 all_users_container">
+    <h1>All users</h1>
+    <ul class="all_users_list">
+      <%= render 'shared/user_profile_info', users: @users %>
+    </ul>
+    <%= will_paginate @users %>
+  </div>
+</div>

@@ -1,22 +1,27 @@
 <% users.each do |user| %>
   <li class="user_profile_info">
-    <div class="profile_container">
-      <div class="user_info">
-        <a href="users/<%= user.id %>">
-          <%= image_tag avatar_url(user) %>
-        </a>
+    <div class="row">
+      <div class="small-12 large-3 large-offset-3 columns">
+        <div class="profile_container">
+          <div class="user_info">
+            <a href="users/<%= user.id %>">
+              <%= image_tag avatar_url(user) %>
+            </a>
+          </div>
+        </div>
+        <div class="name">
+          <%= user.full_name %>
+        </div>
       </div>
-      <div class="name">
-        <%= user.full_name %>
+      <div class="small-12 large-6 columns">
+        <div class="user_favorites">
+          <ul class="favorites">
+            <li><b class="user_favorites_title">Favorite Movies:</b> <span><%= user.fav_movies %></span></li>
+            <li><b class="user_favorites_title">Favorite TV Shows:</b> <span><%= user.fav_tv %></span></li>
+            <li><b class="user_favorites_title">Favorite Books:</b> <span><%= user.fav_books %></span></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="user_favorites">
-      <ul class="favorites">
-        <li>Favorite Movies: <span><%= user.fav_movies %></li>
-        <li>Favorite TV Shows: <span><%= user.fav_tv %></li>
-        <li>Favorite Books: <span><%= user.fav_books %></li>
-      </ul>
     </div>
   </li>
-  <div class="clear"></div>
 <% end %>
