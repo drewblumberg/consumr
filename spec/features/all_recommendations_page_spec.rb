@@ -34,7 +34,7 @@ describe "All Recommendations Page" do
   context "deleting recommendations" do
     before do
       click_link("All Recommendations")
-      first('input[value="Delete"]').click
+      first('input[value="X"]').click
     end
     it "should display a success message upon deletion" do
       page.should have_content('Your recommendation was successfully deleted')

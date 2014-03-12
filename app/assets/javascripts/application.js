@@ -26,10 +26,13 @@ function fillInFormData(e){
   var image_url = $this.attr('src');
   var title = $list_item.children('ul').children('li.medium_title').text();
   var creator = $.trim($list_item.children('ul').children('li.medium_creator').text());
+  var category = $('#search_category').val();
+  var categories = ['Movie', 'TV Show', 'Book'];
 
   $('#medium_title').val(title);
   $('#medium_creator').val(creator);
   $('#medium_image_url').val(image_url);
+  $('#medium_category').val(categories[parseInt(category)-1]);
 }
 
 

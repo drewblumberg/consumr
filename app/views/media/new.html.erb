@@ -1,25 +1,35 @@
-<% unless user_signed_in? %>
-  <h1 class="title">CONSUMR</h1>
-<% else %>
-  <div class="add_media_search_container">
-    <h1 class="title">Add Media</h1>
-    <%= form_tag(search_search_path, remote: true) do %>
-      <%= select_tag(:search_category, options_for_select([['Movie', 1], ['TV Show', 2], ['Book', 3]])) %>
-      <%= text_field_tag :search_item %>
-      <%= submit_tag "Search" %>
-    <% end %>
+<div class="row">
+  <div class="small-12 columns">
+      <h1 class="title">Add Media</h1>
   </div>
-  <div id="search_results" class="search_results"></div>
-  <div class="new_media_form_container">
-    <%= simple_form_for @medium, :url => media_path do |f| %>
-      <%= f.input :title, :id => "medium_title" %>
-      <%= f.input :status, :collection => ["Current", "Wish List", "Finished"], :include_blank => false, :id => "status" %>
-      <%= f.input :category, :collection => ["Book", "Movie", "TV Show"], :include_blank => false, :id => "category" %>
-      <%= f.input :creator, :label => "Author/Director" %>
-      <%= f.input :image_url %>
-      <%= f.input :thoughts %>
-      <%= f.button :submit, "Create Media" %>
-    <% end %>
+</div>
+<div class="row">
+  <div class="small-12 large-4 columns">
+    <h2 class="category_header">Search</h2>
+    <div class="add_media_search_container">
+      <%= form_tag(search_search_path, remote: true) do %>
+        <%= select_tag(:search_category, options_for_select([['Movie', 1], ['TV Show', 2], ['Book', 3]])) %>
+        <%= text_field_tag :search_item, '', :autofocus => true %>
+        <%= submit_tag "Search", :class => "button tiny radius success" %>
+      <% end %>
+    </div>
   </div>
-  <div class="clear"></div>
-<% end %>
+  <div class="small-12 large-4 columns">
+    <h2 class="category_header">Select</h2>
+    <div id="search_results" class="search_results"></div>
+  </div>
+  <div class="small-12 large-4 columns">
+    <h2 class="category_header">Create</h2>
+    <div class="new_media_form_container">
+      <%= simple_form_for @medium, :url => media_path do |f| %>
+        <%= f.input :title, :id => "medium_title" %>
+        <%= f.input :status, :collection => ["Current", "Wish List", "Finished"], :include_blank => false, :id => "status" %>
+        <%= f.input :category, :collection => ["Movie", "TV Show", "Book"], :include_blank => false, :id => "category" %>
+        <%= f.input :creator, :label => "Author/Director" %>
+        <%= f.input :image_url %>
+        <%= f.input :thoughts %>
+        <%= f.button :submit, "Create Media", :class => "button tiny radius success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

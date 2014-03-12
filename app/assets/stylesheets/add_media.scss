@@ -1,0 +1,26 @@
+.category_header {
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.medium {
+  clear: both;
+  text-align: center;
+  img {
+  }
+
+  .medium_info {
+    list-style: none;
+    margin-left: 5px;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.search_results {
+  width: 100%;
+  margin-bottom: 20px;
+}

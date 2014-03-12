@@ -32,37 +32,12 @@
   display: inline-block;
 }
 
-.add_media_search_container {
-  float: left;
-}
-
 .search_results {
   float: left;
 }
 
 .all_media, .favorites {
   list-style: none;
-}
-
-.medium {
-  clear: both;
-  img {
-    float: left;
-  }
-
-  .medium_info {
-    float: left;
-    list-style: none;
-    margin-left: 5px;
-
-    li {
-      margin-bottom: 5px;
-    }
-  }
-}
-
-.new_media_form_container {
-  float: left;
 }
 
 .stock_poster {
