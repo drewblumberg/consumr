@@ -31,7 +31,7 @@ describe "All Media Page" do
   context "deleting media" do
     before do
       within(:css, "li.medium_#{@wish_list.id}") do
-        click_button('Delete')
+        click_button('X')
       end
     end
     it "should display a success message when successful" do

@@ -85,23 +85,23 @@ describe "FriendRequests" do
 
     it "should have a reject friend link within the requests div" do
       within("div[id=friend_requests]") do
-        find_link("Reject").visible?
+        find_button("X").visible?
       end
     end
 
     it "should give success message when clicking reject" do
-      click_link("Reject")
+      click_button("X")
       page.should have_content("Friendship rejected with Jon Snow")
     end
 
     it "should say Accepted Friends on the user's page" do
-      click_link("Reject")
+      click_button("X")
       visit "/users/#{@user1.id}"
       find_link("Request Friendship").visible?
     end
 
     it "should have the request link for the other user looking at your user page" do
-      click_link("Reject")
+      click_button("X")
       click_link("Sign Out")
       sign_in_user(@user1)
       visit "/users/#{@user2.id}"

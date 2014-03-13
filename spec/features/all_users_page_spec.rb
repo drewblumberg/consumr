@@ -22,7 +22,7 @@ describe "All Users Page" do
   end
   context "links" do
     it "should go to correct user page if you click a link" do
-      find(:css, "a[href='users/#{@user1.id}']").click
+      find(:css, "a[href='/users/#{@user1.id}']").click
       page.should have_content('Jon Snow')
     end
   end
