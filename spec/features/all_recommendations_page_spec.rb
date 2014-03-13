@@ -13,7 +13,7 @@ describe "All Recommendations Page" do
   end
   context "link to page" do
     it "should appear for current user on user's profile" do
-      find_link("All Recommendations").visible?
+      find_link("All").visible?
     end
     it "should not appear on a different user's profile" do
       visit "/users/#{@user2.id}"
@@ -22,7 +22,7 @@ describe "All Recommendations Page" do
   end
   context "layout" do
     before do
-      click_link("All Recommendations")
+      click_link("All")
     end
     it "should have header" do
       page.should have_content('All Recommendations')
@@ -33,7 +33,7 @@ describe "All Recommendations Page" do
   end
   context "deleting recommendations" do
     before do
-      click_link("All Recommendations")
+      click_link("All")
       first('input[value="X"]').click
     end
     it "should display a success message upon deletion" do
