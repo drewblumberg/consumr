@@ -32,12 +32,20 @@
       <div class="clear"></div>
       <div class="recommendations">
         <% if @recommendations %>
-          <h2 class="user_subheader">Recommendations</h2>
-          <% if @friendship %>
-            <%= form_tag(new_recommendation_path(u_id: @user.id), method: :get, remote: true) do %>
-              <%= submit_tag "Add", class: 'new_recommendation' %>
-            <% end %>
-          <% end %>
+          <div class="row recommendation_header">
+            <div class="small-5 columns">
+              <h2 class="user_subheader">Recommendations</h2>
+            </div>
+            <div class="small-7 columns">
+                <% if @friendship %>
+                  <%= form_tag(new_recommendation_path(u_id: @user.id), method: :get, remote: true) do %>
+                    <%= submit_tag "Add", class: 'new_recommendation button tiny radius success' %>
+                  <% end %>
+                <% elsif @user == current_user %>
+                  <a href='/recommendations' class="button tiny radius new_recommendation">All</a>
+                <% end %>
+            </div>
+          </div>
           <ul class="recent_recommendations">
             <% @recommendations.each_with_index do |r, i| %>
               <% break if i == 3 %>
@@ -47,9 +55,6 @@
               </li>
             <% end %>
           </ul>
-        <% end %>
-        <% if @user == current_user %>
-          <a href='/recommendations'>All Recommendations</a>
         <% end %>
       </div>
       <div id="recommendations" class="recommendations">
