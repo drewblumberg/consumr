@@ -35,3 +35,8 @@
 .all_users_list, .all_friends_list {
   list-style: none;
 }
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
