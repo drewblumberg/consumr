@@ -17,7 +17,14 @@
 //= require_tree .
 
 $(document).ready(function(){
+  var $window = $(window);
+  var $heroButton = $('.hero_button');
+
   $('#search_results').on('click', '.medium img', fillInFormData);
+
+  if($window.width() < 600) {
+    return $heroButton.removeClass('large').addClass('tiny');
+  }
 });
 
 function fillInFormData(e){

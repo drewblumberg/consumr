@@ -13,6 +13,7 @@
 
  *= require_tree .
  */
+@import "font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC);
 
 .clear {
@@ -34,6 +35,63 @@
 
 .all_users_list, .all_friends_list {
   list-style: none;
+}
+
+.hero_image {
+  background: url(bookshelf.jpg) no-repeat;
+  background-size: cover;
+  margin-top: -20px;
+  text-align: center;
+
+  a {
+    margin-top: 40px;
+    @media (max-width: 600px) {
+      margin-top: -40px;
+    }
+  }
+
+  .hero_logo {
+    font-size: 5em;
+    color: white;
+    margin-top: 20px;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+    @media (max-width: 600px) {
+      margin-top: -5px;
+      font-size: 2em;
+    }
+
+    @media only screen and (min-width: 601px) and  (max-width: 1300px) {
+      margin-top: 20px;
+      font-size: 5em;
+    }
+  }
+
+  .logo_subtext {
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+    @media (max-width: 600px) {
+      margin-top: -20px;
+      font-size: 1em;
+    }
+  }
+}
+
+.mission {
+  text-align: center;
+  margin-top: 30px;
+
+  p {
+    margin-top: 30px;
+  }
+}
+
+.mission_mobile {
+  @media(max-width: 600px){
+    border-bottom: 1px solid #CCC;
+  }
 }
 
 input, textarea {
