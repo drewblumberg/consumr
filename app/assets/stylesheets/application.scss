@@ -43,6 +43,10 @@
   margin-top: -20px;
   text-align: center;
 
+  @media(max-width: 600px) {
+    -webkit-background-size: 500px 300px;
+  }
+
   a {
     margin-top: 40px;
     @media (max-width: 600px) {
