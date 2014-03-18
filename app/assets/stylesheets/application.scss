@@ -44,7 +44,8 @@
   text-align: center;
 
   @media(max-width: 600px) {
-    -webkit-background-size: 500px 300px;
+    background: url(mobile-bookshelf.jpg) no-repeat;
+    background-size: cover;
   }
 
   a {
