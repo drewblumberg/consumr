@@ -9,6 +9,8 @@ gem 'foundation-rails'
 gem 'googlebooks'
 gem 'jbuilder', '~> 1.2'
 gem "jquery-rails"
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'pg'
 gem 'rails', '4.0.2'
 gem 'sass-rails', '~> 4.0.0'

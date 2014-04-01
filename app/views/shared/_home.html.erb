@@ -3,7 +3,11 @@
     <div class="small-12 columns">
       <p class="logo hero_logo">CONSUMR</p>
       <p class="logo logo_subtext">The premiere online interactive media library</p>
-      <%= link_to 'Sign Up Now', new_user_registration_path, :class => "button large radius hero_button" %>
+      <div class="home_btn_container">
+        <%= link_to 'Sign Up Now', new_user_registration_path, :class => "button large radius hero_button" %>
+        <span class="hero_sep">or</span>
+        <a class="button large radius hero_button" href="/users/auth/facebook">Sign In with <i class="facebook fa fa-facebook"></i></a>
+      </div>
     </div>
   </div>
 </div>
